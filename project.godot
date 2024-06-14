@@ -13,3 +13,9 @@ config_version=5
 config/name="gamejammin"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=480
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
