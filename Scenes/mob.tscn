@@ -48,12 +48,9 @@ animations = [{
 radius = 35.0
 height = 96.0
 
-[node name="Mob" type="Node2D"]
-script = ExtResource("1_gl8vu")
-
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
+[node name="Mob" type="RigidBody2D"]
 collision_mask = 0
-metadata/_edit_group_ = true
+script = ExtResource("1_gl8vu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.75, 0.75)
