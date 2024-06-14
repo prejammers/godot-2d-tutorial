@@ -49,6 +49,7 @@ radius = 35.0
 height = 82.6667
 
 [node name="Mob" type="RigidBody2D" groups=["mobs"]]
+collision_mask = 0
 gravity_scale = 0.0
 script = ExtResource("1_gl8vu")
 
