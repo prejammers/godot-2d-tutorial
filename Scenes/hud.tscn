@@ -7,12 +7,15 @@
 script = ExtResource("1_3nybc")
 
 [node name="ScoreLabel" type="Label" parent="."]
-anchors_preset = 5
+anchors_preset = -1
 anchor_left = 0.5
+anchor_top = 0.044
 anchor_right = 0.5
-offset_left = -22.5
-offset_right = 22.5
-offset_bottom = 78.0
+anchor_bottom = 0.044
+offset_left = -22.0
+offset_top = -31.68
+offset_right = 25.0
+offset_bottom = 46.32
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("2_m70bh")
 theme_override_font_sizes/font_size = 64
@@ -42,15 +45,15 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="StartButton" type="Button" parent="."]
-anchors_preset = 7
+anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.878
 anchor_right = 0.5
-anchor_bottom = 1.0
+anchor_bottom = 0.878
 offset_left = -100.0
-offset_top = -140.0
+offset_top = -52.16
 offset_right = 100.0
-offset_bottom = -40.0
+offset_bottom = 47.84
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("2_m70bh")
@@ -60,3 +63,6 @@ text = "Start"
 [node name="MessageTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]

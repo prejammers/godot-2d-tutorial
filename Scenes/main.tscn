@@ -1,8 +1,68 @@
 [gd_scene load_steps=5 format=3 uid="uid://cbdqmf61qtfsf"]
 
-[ext_resource type="Script" path="res://Scenes/Main.gd" id="1_66s6h"]
 [ext_resource type="PackedScene" uid="uid://bmpqumsmvibdw" path="res://Scenes/player.tscn" id="2_0cbwy"]
 [ext_resource type="PackedScene" uid="uid://btxftm08glddu" path="res://Scenes/hud.tscn" id="3_x50bc"]
+
+[sub_resource type="GDScript" id="GDScript_7s6hb"]
+resource_local_to_scene = true
+script/source = "extends Node
+
+@export var mob_scene: PackedScene
+var score
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+@warning_ignore(\"unused_parameter\")
+func _process(delta):
+	pass
+
+func game_over():
+	$ScoreTimer.stop()
+	$MobTimer.stop()
+	$HUD.show_game_over()
+
+func new_game():
+	score = 0
+	$Player.start($StartPosition.position)
+	$StartTimer.start()
+	$HUD.update_score(score)
+	$HUD.show_message(\"Get Ready\")
+
+func _on_score_timer_timeout():
+	score += 1
+	$HUD.update_score(score)
+
+func _on_start_timer_timeout():
+	$MobTimer.start()
+	$ScoreTimer.start()
+
+func _on_mob_timer_timeout():
+	var mob = mob_scene.instantiate()
+	# Choose a random location on Path2D.
+	var mob_spawn_location = $MobPath/MobSpawnLocation
+	mob_spawn_location.progress_ratio = randf()
+
+	# Set the mob's direction perpendicular to the path direction.
+	var direction = mob_spawn_location.rotation + PI / 2
+
+	# Set the mob's position to a random location.
+	mob.position = mob_spawn_location.position
+
+	# Add some randomness to the direction.
+	direction += randf_range(-PI / 4, PI / 4)
+	mob.rotation = direction
+
+	# Choose the velocity for the mob.
+	var velocity = Vector2(randf_range(150.0, 250.0), 0.0)
+	mob.linear_velocity = velocity.rotated(direction)
+
+	# Spawn the mob by adding it to the Main scene.
+	add_child(mob)
+"
 
 [sub_resource type="Curve2D" id="Curve2D_6av2y"]
 _data = {
@@ -11,7 +71,7 @@ _data = {
 point_count = 5
 
 [node name="Main" type="Node"]
-script = ExtResource("1_66s6h")
+script = SubResource("GDScript_7s6hb")
 
 [node name="Player" parent="." instance=ExtResource("2_0cbwy")]
 metadata/_edit_group_ = true
