@@ -15,7 +15,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("2_hbunb")
 }],
-"loop": true,
+"loop": false,
 "name": &"up",
 "speed": 5.0
 }, {
@@ -42,6 +42,8 @@ script = ExtResource("1_fr87f")
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_rwpv0")
 animation = &"up"
+frame = 1
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_utlvx")
