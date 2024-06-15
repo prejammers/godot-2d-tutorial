@@ -1,5 +1,8 @@
 extends CanvasLayer
 
+@onready var pausemenu = $PauseMenu
+var paused = false
+
 signal start_game
 
 func show_message(text):
@@ -33,5 +36,16 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(delta):
-	pass
+	if Input.is_action_just_pressed("pause"):
+		pause_menu()
+
+func pause_menu():
+	if paused:
+		pausemenu.hide()
+		get_tree().paused = false
+	else:
+		pausemenu.show()
+		get_tree().paused = true
+	paused = !paused
