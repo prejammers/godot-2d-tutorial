@@ -6,3 +6,4 @@ Checkout the starter branch to start from page 1 of the tutorial or checkout you
 Once you have a pull request, ask for a code review in our discord to recieve the collaborator role.
 
 https://docs.godotengine.org/en/stable/getting_started/first_2d_game/index.html
+Test
