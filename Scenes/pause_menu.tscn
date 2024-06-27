@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://c5pqo38n7h1tp"]
+[gd_scene load_steps=3 format=3 uid="uid://c5pqo38n7h1tp"]
 
+[ext_resource type="FontFile" uid="uid://tyivjtxtneje" path="res://fonts/Xolonium-Regular.ttf" id="1_dp5d8"]
 [ext_resource type="Script" path="res://Scenes/volumeslider.gd" id="1_oy44w"]
 
 [node name="PauseMenu" type="Control"]
@@ -19,6 +20,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.219608, 0.219608, 0.219608, 0.643137)
+
+[node name="Message" type="Label" parent="."]
+custom_minimum_size = Vector2(480, 0)
+layout_mode = 2
+offset_top = 120.0
+offset_right = 480.0
+offset_bottom = 198.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_dp5d8")
+theme_override_font_sizes/font_size = 64
+text = "PAUSED"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
