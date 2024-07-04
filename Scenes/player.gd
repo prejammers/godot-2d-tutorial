@@ -33,7 +33,6 @@ func _process(delta):
 	position = position.clamp(Vector2.ZERO, screen_size)
 	
 	if velocity.y != 0 and velocity.x != 0:
-		print("DIAGONAL")
 		$AnimatedSprite2D.animation = "diagonal"
 		$AnimatedSprite2D.flip_v = velocity.y > 0
 		$AnimatedSprite2D.flip_h = velocity.x < 0
