@@ -31,14 +31,24 @@ func _process(delta):
 		$AnimatedSprite2D.stop()
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, screen_size)
-	if velocity.x != 0:
-		$AnimatedSprite2D.animation = "walk"
-		$AnimatedSprite2D.flip_v = false
-		# See the note below about boolean assignment.
-		$AnimatedSprite2D.flip_h = velocity.x < 0
-	elif velocity.y != 0:
-		$AnimatedSprite2D.animation = "up"
+	
+	if velocity.y != 0 and velocity.x != 0:
+		print("DIAGONAL")
+		$AnimatedSprite2D.animation = "diagonal"
 		$AnimatedSprite2D.flip_v = velocity.y > 0
+		$AnimatedSprite2D.flip_h = velocity.x < 0
+	else:
+		
+		if velocity.x != 0:
+			$AnimatedSprite2D.animation = "walk"
+			$AnimatedSprite2D.flip_v = false
+			# See the note below about boolean assignment.
+			$AnimatedSprite2D.flip_h = velocity.x < 0
+		elif velocity.y != 0:
+			$AnimatedSprite2D.animation = "up"
+			$AnimatedSprite2D.flip_v = velocity.y > 0
+		
+		
 
 
 func _on_body_entered(body):
